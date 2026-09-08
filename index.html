@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Generador editable de planificaciones contextualizadas al currículo MEDUCA Panamá.">
+  <title>MEDUCA Planifica | Asistente docente</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">MEDUCA <span>Planifica</span></a>
+    <div class="teacher"><span id="accessBadge" class="access-badge" hidden>PRUEBA · 1 PLAN</span><span class="avatar">FS</span><span><b id="teacherName">Facundo Santo</b><small id="teacherEmail">English Teacher</small></span><button id="accountBtn" class="account-btn" type="button" hidden>Mi cuenta</button><button id="topSignOutBtn" class="top-signout-btn" type="button" hidden>Cerrar sesión</button></div>
+  </header>
+
+  <main class="app-shell">
+    <aside class="sidebar" aria-label="Navegación principal">
+      <div class="school-card">
+        <div class="school-icon" aria-hidden="true">🏫</div>
+        <div><b>Llano Limón</b><span>Elementary School</span></div>
+      </div>
+      <nav>
+        <button class="nav-item engine-nav" id="engineNav" type="button">◆ Motor de Inglés <em>6 MOMENTOS</em></button>
+        <button class="nav-item general-nav" id="generalPlannerNav" type="button">⬟ Planeamiento general 2026 <em>NUEVO</em></button>
+        <button class="nav-item active" type="button">✦ Nueva planificación de Inglés</button>
+        <button class="nav-item" id="savedNav" type="button">▣ Mis planificaciones <span id="savedCount">0</span></button>
+        <button class="nav-item" id="activityNav" type="button">▦ Banco de actividades</button>
+        <button class="nav-item" id="rubricNav" type="button">✓ Instrumentos</button>
+        <button class="nav-item" id="quarterNav" type="button">▤ Plan trimestral</button>
+        <button class="nav-item" id="materialsNav" type="button">✎ Proyectos y materiales</button>
+        <button class="nav-item" id="curriculumNav" type="button">⌘ Biblioteca curricular</button>
+        <button class="nav-item grade3-nav" id="grade3ProgramNav" type="button">◈ Programa 2026 · 3.º</button>
+      </nav>
+      <div class="sidebar-note"><b>Diseñado para su realidad</b><p>Actividades claras, inclusivas y posibles con pocos recursos.</p></div>
+    </aside>
+
+    <section class="workspace">
+      <div class="heading">
+        <div><p class="eyebrow">MOTOR EXCLUSIVO DE INGLÉS</p><h1>Cree una clase de Inglés lista para enseñar</h1><p>Este espacio utiliza únicamente la secuencia de seis momentos del currículo de Inglés.</p></div>
+        <div class="status"><i></i> Borrador local</div>
+      </div>
+
+      <div class="planner-grid">
+        <form id="plannerForm" class="panel setup-panel">
+          <div class="panel-title"><span>1</span><div><h2>Datos de la clase</h2><p>Información curricular y contexto</p></div></div>
+          <div class="field-row">
+            <label>Nivel<select id="grade"><option>Pre-Kinder</option><option>Kindergarten</option><option>1st Grade</option><option>2nd Grade</option><option>3rd Grade</option><option>4th Grade</option><option>5th Grade</option><option>6th Grade</option></select></label>
+            <label>Asignatura<select id="subject"><option>English</option></select></label>
+          </div>
+          <div class="field-row">
+            <label>Tipo de planificación<select id="planType"><option>Daily Lesson Plan</option><option>Weekly Lesson Plan</option></select></label>
+            <label>Nivel / Programa<select id="cefr"><option>Pre-A1.1</option><option>Pre-A1.2</option><option>Pre-A1.3</option><option>Pre-A1.4</option><option>A1.1</option><option>A1.2</option><option>A1.3</option><option>A2.1</option><option>MEDUCA 2026</option></select></label>
+          </div>
+          <div class="field-row">
+            <label>Duración<select id="duration"><option value="30">30 minutos</option><option value="35" selected>35 minutos</option><option value="40">40 minutos</option><option value="45">45 minutos</option></select></label>
+            <label>Modalidad<select id="mode"><option>Unigrado</option><option>Multigrado</option></select></label>
+          </div>
+          <label>Scenario / Situación de aprendizaje<select id="scenario" required></select></label>
+          <label>Theme / Tema<select id="theme" required></select></label>
+          <label>Lugar o contexto real<input id="localPlace" type="text" placeholder="Ej.: Boquete, Llano Limón, mi escuela"></label>
+          <label class="objective-label"><span>Objetivo de aprendizaje <button id="objectiveBtn" class="magic-small" type="button">✦ Redactar por mí</button></span><textarea id="objective" rows="4" placeholder="Puede escribirlo o dejar que el sistema lo redacte."></textarea><small>Se construye con grado, tema, escenario, destreza y contexto.</small></label>
+          <div class="field-row">
+            <label>Destreza / competencia<select id="skill"><option>Speaking</option><option>Listening</option><option>Reading</option><option>Writing</option><option>Mediation</option><option>Integrated Skills</option><option>Investigación guiada</option><option>Resolución de problemas</option><option>Comunicación</option><option>Expresión creativa</option><option>Desempeño práctico</option><option>Pensamiento computacional</option></select></label>
+            <label>Evidencia esperada<select id="evidence"><option>Oral performance</option><option>Worksheet</option><option>Mini project</option><option>Role-play</option><option>Poster</option><option>Teacher observation</option><option>Producción escrita</option><option>Experimento o demostración</option><option>Resolución de problemas</option><option>Proyecto colaborativo</option><option>Portafolio de evidencias</option></select></label>
+          </div>
+          <label>Contexto del grupo<textarea id="context" rows="3">Beginner ESL learners with limited vocabulary. Use visual support, modeling, repetition, and pair work.</textarea></label>
+          <button class="primary" type="submit">✦ Generar planificación completa</button>
+          <p class="form-hint">Podrá editar cada sección después de generarla.</p>
+        </form>
+
+        <section class="panel preview-panel" aria-live="polite">
+          <div class="preview-toolbar">
+            <div class="panel-title compact"><span>2</span><div><h2>Planificación editable</h2><p id="previewStatus">Vista previa</p></div></div>
+            <div class="actions">
+              <button id="saveBtn" type="button" title="Guardar">Guardar</button>
+              <button id="downloadBtn" type="button" title="Descargar Word">Word</button>
+              <button id="printBtn" type="button" title="Imprimir o guardar PDF">PDF</button>
+            </div>
+          </div>
+          <div id="emptyState" class="empty-state">
+            <div class="empty-visual"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span></div>
+            <h3>Su planificación aparecerá aquí</h3>
+            <p>Incluye Warm-up, Presentation, Preparation, Performance, Assessment y Reflection.</p>
+          </div>
+          <article id="planDocument" class="plan-document hidden"></article>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="savedDialog">
+    <div class="dialog-head"><h2>Mis planificaciones</h2><button id="closeDialog" aria-label="Cerrar">×</button></div>
+    <div id="savedList" class="saved-list"></div>
+  </dialog>
+  <dialog id="activityDialog" class="wide-dialog">
+    <div class="dialog-head bank-head"><div><p class="eyebrow">COLECCIÓN EN CRECIMIENTO</p><h2>Banco de actividades por tema</h2><p>Ideas visuales, manipulativas y digitales organizadas por materia y nivel.</p></div><button class="dialog-close" aria-label="Cerrar">×</button></div>
+    <div class="bank-controls curriculum-bank-controls"><label>Materia<select id="bankSubject"></select></label><label>Nivel<select id="bankGrade"><option>3.er grado · Programa 2026</option></select></label><label>Área<select id="bankArea"></select></label><label>Tema<select id="bankTopic"></select></label><label>Modalidad<select id="bankFormat"><option value="all">Todas</option><option value="visual">Visual</option><option value="manipulative">Manipulativa</option><option value="collaborative">Colaborativa</option><option value="digital">Juego en línea</option></select></label></div>
+    <div class="bank-summary"><span id="bankCount">0 actividades</span><p>Seleccione una tarjeta para ver instrucciones, materiales y producto esperado.</p></div>
+    <div id="activityList" class="activity-list"></div>
+  </dialog>
+  <dialog id="rubricDialog" class="wide-dialog">
+    <div class="dialog-head"><div><h2>Generador de instrumentos</h2><p>Rúbrica contextualizada al producto de aprendizaje.</p></div><button class="dialog-close" aria-label="Cerrar">×</button></div>
+    <div class="rubric-settings"><label>Puntaje total<select id="rubricTotal"><option>20</option><option selected>25</option><option>30</option><option>40</option></select></label><button id="makeRubric" class="primary" type="button">Generar rúbrica</button></div>
+    <div id="rubricOutput" class="rubric-output"></div>
+  </dialog>
+  <dialog id="quarterDialog" class="quarter-dialog">
+    <div class="dialog-head"><div><h2>Planificación trimestral</h2><p>Distribuya dos escenarios y cuatro temas por semanas.</p></div><button class="dialog-close" aria-label="Cerrar">×</button></div>
+    <form id="quarterForm" class="quarter-form">
+      <div class="quarter-meta">
+        <label>Grado<select id="quarterGrade"><option>Pre-Kinder</option><option>Kindergarten</option><option>1st Grade</option><option>2nd Grade</option><option>3rd Grade</option><option>4th Grade</option><option>5th Grade</option><option>6th Grade</option></select></label>
+        <label>Trimestre<select id="quarterNumber"><option>1st Quarter</option><option>2nd Quarter</option><option selected>3rd Quarter</option></select></label>
+        <label>Fecha inicial<input id="quarterStart" type="date" value="2026-09-14" required></label>
+        <label>Fecha final<input id="quarterEnd" type="date" value="2026-12-11" required></label>
+      </div>
+      <div class="scenario-editor">
+        <section><h3>Scenario 1</h3><select id="qScenario1" required></select><select id="qTheme1" required></select><select id="qTheme2" required></select></section>
+        <section><h3>Scenario 2</h3><select id="qScenario2" required></select><select id="qTheme3" required></select><select id="qTheme4" required></select></section>
+      </div>
+      <button class="primary" type="submit">Distribuir trimestre automáticamente</button>
+    </form>
+    <div id="quarterOutput" class="quarter-output"></div>
+  </dialog>
+  <dialog id="materialsDialog" class="quarter-dialog">
+    <div class="dialog-head"><div><h2>Proyectos y materiales imprimibles</h2><p>Genere recursos conectados con la planificación abierta.</p></div><button class="dialog-close" aria-label="Cerrar">×</button></div>
+    <div class="material-controls">
+      <label>Recurso<select id="materialType"><option value="project">Final Project Pack</option><option value="worksheet">Meaningful Worksheet</option><option value="cards">Cut-and-Use Cards</option></select></label>
+      <label>Nivel de apoyo<select id="supportLevel"><option value="high">High · Beginners</option><option value="medium">Medium · Guided</option><option value="low">Low · Independent</option></select></label>
+      <label>Formato<select id="printMode"><option value="bw">Black & White</option><option value="color">Color</option></select></label>
+      <button id="generateMaterial" class="primary" type="button">Generar material</button>
+    </div>
+    <div id="materialsOutput" class="materials-output"></div>
+  </dialog>
+  <dialog id="curriculumDialog" class="quarter-dialog">
+    <div class="dialog-head"><div><h2>Biblioteca curricular MEDUCA</h2><p>Pre-Kinder a 6.º grado · 64 escenarios · 128 temas.</p></div><button class="dialog-close" aria-label="Cerrar">×</button></div>
+    <div class="curriculum-controls"><label>Grado<select id="curriculumGrade"></select></label><div class="coverage-badge"><b id="coverageCefr">Pre-A1.1</b><span>Official proficiency progression</span></div></div>
+    <div id="curriculumList" class="curriculum-list"></div>
+  </dialog>
+  <dialog id="grade3ProgramDialog" class="quarter-dialog program-dialog">
+    <div class="dialog-head program-head"><div><p class="eyebrow">CURRÍCULO OFICIAL MEDUCA</p><h2>Programa de Tercer Grado · Actualización 2026</h2><p>Fase de validación · Seleccione una asignatura para consultar sus áreas y contenidos.</p></div><button class="dialog-close" aria-label="Cerrar">×</button></div>
+    <div class="program-controls"><label>Asignatura<select id="grade3Subject"></select></label><div class="program-source"><b>Fuente oficial</b><span>Dirección Nacional de Currículo y Tecnología Educativa · 374 páginas</span><a href="https://educapanama.edu.pa/sites/default/files/prog-tercer_grado-2026.pdf" target="_blank" rel="noopener">Consultar documento oficial ↗</a></div></div>
+    <div id="grade3ProgramList" class="program-list"></div>
+  </dialog>
+  <dialog id="generalPlannerDialog" class="engine-dialog general-planner-dialog">
+    <div class="dialog-head general-head"><div><p class="eyebrow">PROGRAMA GENERAL · TERCER GRADO 2026</p><h2>Planeamiento por competencias</h2><p>Estructura independiente de Inglés: alineación curricular e Inicio, Desarrollo y Cierre.</p></div><div class="engine-exit"><button id="generalBack" class="engine-back" type="button">← Volver al inicio</button><button class="dialog-close engine-close" type="button" aria-label="Cerrar">×</button></div></div>
+    <div class="general-layout">
+      <form id="generalPlannerForm" class="engine-form general-form">
+        <div class="curriculum-seal">MEDUCA · ACTUALIZACIÓN 2026</div>
+        <label>Grado<select id="generalGrade"><option>3.er grado</option></select></label>
+        <label>Asignatura<select id="generalSubject"></select></label>
+        <label>Área curricular<select id="generalArea"></select></label>
+        <label>Contenido / tema<select id="generalTopic"></select></label>
+        <div class="field-row"><label>Duración<select id="generalDuration"><option>40</option><option selected>80</option><option>120</option></select></label><label>Organización<select id="generalGrouping"><option>Equipos cooperativos</option><option>Parejas</option><option>Individual y plenaria</option><option>Estaciones</option></select></label></div>
+        <label>Contexto auténtico<input id="generalContext" type="text" value="Llano Limón y la comunidad cercana"></label>
+        <label>Competencia prioritaria<select id="generalCompetency"><option>Resolución de problemas</option><option>Investigación y pensamiento crítico</option><option>Comunicación</option><option>Creatividad</option><option>Ciudadanía responsable</option><option>Pensamiento computacional</option></select></label>
+        <label>Evidencia principal<select id="generalEvidence"><option>Producto aplicado y explicación individual</option><option>Resolución razonada</option><option>Investigación guiada</option><option>Demostración práctica</option><option>Producción escrita</option><option>Portafolio de evidencias</option></select></label>
+        <label>Necesidades del grupo<textarea id="generalNeeds" rows="3">Diferentes ritmos de aprendizaje; utilizar modelado, materiales concretos, apoyos visuales y opciones de participación.</textarea></label>
+        <button class="primary" type="submit">⬟ Generar planeamiento general</button>
+      </form>
+      <section class="engine-preview general-preview" aria-live="polite">
+        <div id="generalEmpty" class="engine-empty"><div class="general-flow"><b>ALINEACIÓN</b><span>→</span><b>INICIO</b><span>→</span><b>DESARROLLO</b><span>→</span><b>CIERRE</b></div><h3>Una estructura propia para las materias generales</h3><p>El resultado incluirá los tres tipos de contenido, indicador de logro, evaluación y actividades contextualizadas.</p></div>
+        <article id="generalOutput" class="engine-output hidden"></article>
+      </section>
+    </div>
+  </dialog>
+  <dialog id="engineDialog" class="engine-dialog">
+    <div class="dialog-head engine-head"><div><p class="eyebrow">PLANEAMIENTO OFICIAL CONECTADO</p><h2>Motor de Planeamiento MEDUCA</h2><p>Un tema completo: overview, cinco lecciones, actividades, proyecto y rúbrica.</p></div><div class="engine-exit"><button id="engineBack" class="engine-back" type="button">← Volver al inicio</button><button class="dialog-close engine-close" type="button" aria-label="Cerrar Motor MEDUCA" title="Cerrar y volver al inicio">×</button></div></div>
+    <div class="engine-layout">
+      <form id="engineForm" class="engine-form">
+        <div class="engine-progress"><span class="done">1<small>Datos</small></span><i></i><span>2<small>Overview</small></span><i></i><span>3<small>Lecciones</small></span><i></i><span>4<small>Recursos</small></span></div>
+        <div class="field-row"><label>Grado<select id="engineGrade"></select></label><label>Nivel CEFR<input id="engineCefr" readonly></label></div>
+        <label>Scenario / Situación de aprendizaje<select id="engineScenario"></select></label>
+        <label>Theme / Tema<select id="engineTheme"></select></label>
+        <label>Lugar o contexto real<input id="engineLocalPlace" type="text" placeholder="Ej.: Boquete, Llano Limón, mi escuela"></label>
+        <div class="field-row"><label>Fecha inicial<input id="engineStart" type="date" value="2026-11-19" required></label><label>Periodos semanales<select id="enginePeriods"><option value="3">3 periodos</option><option value="4" selected>4 periodos</option><option value="5">5 periodos</option></select></label></div>
+        <div class="field-row"><label>Minutos por periodo<select id="engineMinutes"><option>30</option><option selected>35</option><option>40</option><option>45</option></select></label><label>Duración del tema<select id="engineWeeks"><option value="2">2 semanas</option><option value="3" selected>3 semanas</option><option value="4">4 semanas</option></select></label></div>
+        <label>Contexto del grupo<textarea id="engineContext" rows="3">Beginner ESL learners. Limited vocabulary, visual support, modeling, repetition, pair work, and low-cost materials.</textarea></label>
+        <label>Proyecto del siglo XXI<select id="engineProjectType"></select></label>
+        <fieldset class="engine-options"><legend>El paquete incluirá</legend><label><input type="checkbox" checked disabled> Theme Planner / Overview</label><label><input type="checkbox" checked disabled> 5 Daily Lesson Plans</label><label><input type="checkbox" id="engineProject" checked> Proyecto contextualizado + rúbrica analítica</label><label><input type="checkbox" id="engineAnswers" checked> Teacher scripts and answer key</label><label><input type="checkbox" id="engineBw" checked> Print-friendly black & white resources</label></fieldset>
+        <button class="primary" type="submit">◆ Generar paquete completo</button>
+        <p class="form-hint">Los campos quedan vinculados para evitar errores entre escenario, tema y lecciones.</p>
+      </form>
+      <section class="engine-preview" aria-live="polite">
+        <div id="engineEmpty" class="engine-empty"><div class="engine-map"><b>ANUAL</b><span>→</span><b>TEMA</b><span>→</span><b>5 LECCIONES</b><span>→</span><b>RECURSOS</b></div><h3>Todo el planeamiento conectado</h3><p>Genere una secuencia editable y alineada desde Listening hasta Mediation.</p></div>
+        <article id="engineOutput" class="engine-output hidden"></article>
+      </section>
+    </div>
+  </dialog>
+  <dialog id="accountDialog" class="account-dialog">
+    <div class="dialog-head"><div><h2>Mi cuenta docente</h2><p>Sesión protegida de MEDUCA Planifica</p></div><button class="dialog-close" aria-label="Cerrar">×</button></div>
+    <div class="account-body"><div class="account-avatar">FS</div><h3 id="accountEmail"></h3><div id="accountAccess" class="account-access"></div><p>Sus planificaciones se guardan en su biblioteca privada y estarán disponibles desde cualquier dispositivo.</p>
+      <form id="passwordForm" class="password-form">
+        <h4>Crear o cambiar contraseña</h4>
+        <p>Si esta es su primera entrada desde una invitación, cree aquí la contraseña que usará en adelante.</p>
+        <label>Nueva contraseña<input id="newPassword" type="password" minlength="8" autocomplete="new-password" required></label>
+        <label>Confirmar contraseña<input id="confirmPassword" type="password" minlength="8" autocomplete="new-password" required></label>
+        <button id="passwordBtn" class="primary" type="submit">Guardar contraseña</button>
+        <div id="passwordMessage" class="login-message" role="status"></div>
+      </form>
+      <button id="signOutBtn" class="signout-btn" type="button">Cerrar sesión</button>
+    </div>
+  </dialog>
+  <section id="authGate" class="auth-gate" aria-label="Inicio de sesión">
+    <div class="auth-brand"><div class="auth-mark">MP</div><span>MEDUCA <b>Planifica</b></span></div>
+    <form id="loginForm" class="login-card">
+      <p class="eyebrow">CUENTA DOCENTE PERSONAL</p><h1 id="authTitle">Bienvenido a su espacio de planificación</h1>
+      <div class="auth-tabs" role="tablist" aria-label="Acceso a la cuenta"><button id="showLoginBtn" class="active" type="button" role="tab" aria-selected="true">Iniciar sesión</button><button id="showSignupBtn" type="button" role="tab" aria-selected="false">Crear cuenta</button></div>
+      <p id="authIntro" class="login-intro">Ingrese con su correo y contraseña.</p>
+      <div id="signupFields" hidden>
+        <label>Nombre completo<input id="signupName" type="text" autocomplete="name"></label>
+        <label>Escuela<input id="signupSchool" type="text" autocomplete="organization" placeholder="Nombre de su centro educativo"></label>
+      </div>
+      <label>Correo electrónico<input id="loginEmail" type="email" autocomplete="email" placeholder="docente@correo.com" required></label>
+      <label>Contraseña<input id="loginPassword" type="password" autocomplete="current-password" minlength="8" required></label>
+      <label id="signupConfirmLabel" hidden>Confirmar contraseña<input id="signupConfirm" type="password" minlength="8" autocomplete="new-password"></label>
+      <button id="loginBtn" class="primary" type="submit">Iniciar sesión</button>
+      <button id="resetPasswordBtn" class="text-button" type="button">¿Olvidó su contraseña?</button>
+      <div id="loginMessage" class="login-message" role="status"></div>
+      <p id="accountHint" class="invite-note">¿Es su primera vez? Seleccione <b>Crear cuenta</b>.</p>
+    </form>
+    <footer>Planificación curricular para docentes de Panamá · Acceso privado</footer>
+  </section>
+  <div id="toast" role="status"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="curriculum.js"></script>
+  <script src="grade3_2026.js"></script>
+  <script src="app.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>
