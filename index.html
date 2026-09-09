@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Generador editable de planificaciones contextualizadas al currículo MEDUCA Panamá.">
   <title>MEDUCA Planifica | Asistente docente</title>
-  <link rel="stylesheet" href="styles.css?v=17">
+  <link rel="stylesheet" href="styles.css?v=18">
 </head>
 <body>
   <header class="topbar">
@@ -94,7 +94,7 @@
   </dialog>
   <dialog id="activityDialog" class="wide-dialog">
     <div class="dialog-head bank-head"><div><p class="eyebrow">COLECCIÓN EN CRECIMIENTO</p><h2>Banco de actividades por tema</h2><p>Ideas visuales, manipulativas y digitales organizadas por materia y nivel.</p></div><button class="dialog-close" aria-label="Cerrar">×</button></div>
-    <div class="bank-controls curriculum-bank-controls"><label>Materia<select id="bankSubject"></select></label><label>Nivel<select id="bankGrade"><option>3.er grado · Programa 2026</option></select></label><label>Área<select id="bankArea"></select></label><label>Tema<select id="bankTopic"></select></label><label>Modalidad<select id="bankFormat"><option value="all">Todas</option><option value="visual">Visual</option><option value="manipulative">Manipulativa</option><option value="collaborative">Colaborativa</option><option value="digital">Juego en línea</option></select></label></div>
+    <div class="bank-controls curriculum-bank-controls"><label>Banco<select id="bankTrack"><option value="english">Inglés · Principal</option><option value="general">Materias generales · 2026</option></select></label><label>Materia<select id="bankSubject"></select></label><label>Nivel<select id="bankGrade"></select></label><label id="bankAreaLabel">Scenario<select id="bankArea"></select></label><label>Theme / Tema<select id="bankTopic"></select></label><label>Destreza<select id="bankSkill"><option>Integrated Skills</option><option>Listening</option><option>Speaking</option><option>Reading</option><option>Writing</option><option>Mediation</option></select></label><label>Modalidad<select id="bankFormat"><option value="all">Todas</option><option value="visual">Visual</option><option value="manipulative">Recortable / manipulativa</option><option value="collaborative">Colaborativa</option><option value="digital">Juego en línea</option></select></label></div>
     <div class="bank-summary"><span id="bankCount">0 actividades</span><p>Seleccione una tarjeta para ver instrucciones, materiales y producto esperado.</p></div>
     <div id="activityList" class="activity-list"></div>
   </dialog>
@@ -221,9 +221,9 @@
   </section>
   <div id="toast" role="status"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script src="curriculum.js?v=17"></script>
-  <script src="grade3_2026.js?v=17"></script>
-  <script src="app.js?v=17"></script>
-  <script src="auth.js?v=17"></script>
+  <script src="curriculum.js?v=18"></script>
+  <script src="grade3_2026.js?v=18"></script>
+  <script src="app.js?v=18"></script>
+  <script src="auth.js?v=18"></script>
 </body>
 </html>
